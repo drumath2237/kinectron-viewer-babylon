@@ -1,5 +1,3 @@
-import { Kinectron } from "/src/kinectron-client/kinectron-client";
-
 export default class App {
   /**
    * entry point
@@ -13,7 +11,7 @@ export default class App {
     kinectron.makeConnection();
 
     kinectron.startRawDepth((depthBuffer) => {
-      console.log("aa");
+      console.log(depthBuffer);
     });
   }
 }
