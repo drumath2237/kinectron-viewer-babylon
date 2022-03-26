@@ -1,17 +1,20 @@
+import * as Lib from "./lib";
+
 export default class App {
   /**
    * entry point
    */
   static main() {
-    const kinectron = new Kinectron("127.0.0.1");
-    const rawDepthWidth = 640 / 2;
-    const rawDepthHeight = 576 / 2;
+    new Lib.Lib("hello");
+    // const kinectron = new Kinectron("127.0.0.1");
+    // const rawDepthWidth = 640 / 2;
+    // const rawDepthHeight = 576 / 2;
 
-    kinectron.setKinectType("azure");
-    kinectron.makeConnection();
+    // kinectron.setKinectType("azure");
+    // kinectron.makeConnection();
 
-    kinectron.startRawDepth((depthBuffer) => {
-      console.log(depthBuffer);
-    });
+    // kinectron.startRawDepth((depthBuffer) => {
+    //   console.log(depthBuffer);
+    // });
   }
 }
