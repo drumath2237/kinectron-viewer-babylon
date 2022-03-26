@@ -18,7 +18,7 @@ interface IKinectronClient {
 
 const kinectronRawDepthResolution = {
   width: 640 / 2,
-  height: 579 / 2,
+  height: 576 / 2,
 };
 
 export { IKinectronClient, kinectronRawDepthResolution };

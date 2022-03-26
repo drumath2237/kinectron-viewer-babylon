@@ -20,11 +20,12 @@ class KinectronProvider implements IPointCloudProvider {
 
   public start(): void {
     this.kinectronClient.makeConnection();
+    this.kinectronClient.startRawDepth(this.onRawDepth);
   }
 
-  private onRawDepth(depthBuffer: Array<number>): void {
+  private onRawDepth = (depthBuffer: Array<number>): void => {
     if (
-      depthBuffer &&
+      !depthBuffer ||
       depthBuffer.length !==
         kinectronRawDepthResolution.width * kinectronRawDepthResolution.height
     ) {
@@ -36,11 +37,11 @@ class KinectronProvider implements IPointCloudProvider {
         depthBuffer.map<Point3D>((depth) => ({ x: depth, y: 0, z: 0 }))
       );
     }
-  }
+  };
 
-  public onReceivePointCloud(fn: rawDepthCallbackFunc): void {
+  public onReceivePointCloud = (fn: rawDepthCallbackFunc): void => {
     this.onDataReceivedFunc = fn;
-  }
+  };
 }
 
 export default KinectronProvider;
