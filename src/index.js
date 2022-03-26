@@ -1,11 +1,12 @@
-import * as Lib from "./lib";
+import Lib from './lib.ts';
 
 export default class App {
   /**
    * entry point
    */
   static main() {
-    new Lib.Lib("hello");
+    const hello = new Lib('hello');
+    console.log(hello);
     // const kinectron = new Kinectron("127.0.0.1");
     // const rawDepthWidth = 640 / 2;
     // const rawDepthHeight = 576 / 2;
