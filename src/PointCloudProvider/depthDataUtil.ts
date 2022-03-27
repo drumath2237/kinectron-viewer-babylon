@@ -37,20 +37,14 @@ class DepthMapUtil {
    * @param focalLength カメラの焦点距離
    * @returns depthから復元した3次元座標
    */
-  public static uvd2Xyz(
-    uv: PointUV,
-    depth: number,
-    focalLength: number
-  ): Point3D {
+  public static uvd2XyzOperator(uv: PointUV, focalLength: number): Point3D {
     return {
       x:
-        (depth * uv.u) /
-        Math.sqrt(focalLength * focalLength + uv.u * uv.u + uv.v * uv.v),
+        uv.u / Math.sqrt(focalLength * focalLength + uv.u * uv.u + uv.v * uv.v),
       y:
-        (depth * uv.v) /
-        Math.sqrt(focalLength * focalLength + uv.u * uv.u + uv.v * uv.v),
+        uv.v / Math.sqrt(focalLength * focalLength + uv.u * uv.u + uv.v * uv.v),
       z:
-        (depth * focalLength) /
+        focalLength /
         Math.sqrt(focalLength * focalLength + uv.u * uv.u + uv.v * uv.v),
     };
   }

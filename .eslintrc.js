@@ -15,6 +15,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     'import/extensions': 0,
     '@typescript-eslint/explicit-member-accessibility': 'off',
+    'no-plusplus': 'off',
   },
   overrides: [
     {
