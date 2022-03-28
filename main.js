@@ -1,7 +1,7 @@
-import "./style.scss";
+import './style.scss';
 
-import App from "./src/index";
+import App from './src/index';
 
-window.addEventListener("load", () => {
-  App.main();
+window.addEventListener('load', async () => {
+  await App.main();
 });
