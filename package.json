@@ -21,6 +21,7 @@
     "vite": "^2.8.0"
   },
   "dependencies": {
+    "@babylonjs/core": "5.0.0-rc.11",
     "peerjs": "^1.3.2"
   }
 }
