@@ -1,5 +1,6 @@
+/* eslint-disable no-param-reassign */
 import {
-  Color4,
+  Color3,
   Engine,
   PointsCloudSystem,
   Scene,
@@ -27,7 +28,7 @@ class BabylonScene {
     const pscBufferLength =
       kinectronRawDepthResolution.width * kinectronRawDepthResolution.height;
 
-    this.pcs = new PointsCloudSystem('point cloud', 2, this.scene);
+    this.pcs = new PointsCloudSystem('point cloud', 3, this.scene);
 
     this.pcs.addPoints(pscBufferLength);
     this.pcs.buildMeshAsync();
@@ -37,10 +38,33 @@ class BabylonScene {
         return point;
       }
 
-      //  eslint-disable-next-line no-param-reassign
       point.position.x = this.vertices[point.idx].x;
       point.position.y = this.vertices[point.idx].y;
       point.position.z = this.vertices[point.idx].z;
+
+      const clampUpto180 = (val: number): number => {
+        if (val < 0) {
+          return 0;
+        }
+        if (val > 180) {
+          return 180;
+        }
+        return val;
+      };
+
+      const color: Color3 = new Color3();
+      Color3.HSVtoRGBToRef(
+        clampUpto180((point.position.length() * 180) / Math.PI),
+        1,
+        1,
+        color
+      );
+
+      if (point.color) {
+        point.color.r = color.r;
+        point.color.g = color.g;
+        point.color.b = color.b;
+      }
 
       return point;
     };
