@@ -1,6 +1,6 @@
 # Kinectron Viewer Babylon
 
-![img](docs/img.png)
+https://user-images.githubusercontent.com/11372210/161946238-7b444ebf-2a20-4f70-bcba-09a065a6ee6c.mp4
 
 ## About
 
